@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PhoneInput from 'react-phone-number-input';
+import SignUp from './signup.component';
 
 import 'react-phone-number-input/style.css';
 import './reactPhone.style.css';
@@ -12,7 +13,7 @@ const ReactPhone = () => {
             placeholder="Enter phone number"
             className="form-control"
             name="mobile"
-            onChange={this.handleChange.bind(this)}
+            
             defaultCountry="LK"
             value={value}
             onChange={setValue}

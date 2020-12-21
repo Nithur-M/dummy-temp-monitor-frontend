@@ -3,13 +3,6 @@ import ReactPhone from './reactPhone';
 import axios from 'axios';
 
 export default class SignUp extends Component {
-    state = {
-        username: '',
-        email: '',
-        mobile: '',
-        password: '',
-      }
-      
 
       handleChange = event => {
         this.setState({ username: event.target.value });
@@ -27,6 +20,12 @@ export default class SignUp extends Component {
           mobile: this.state.mobile,
           password: this.state.password
         };
+
+        axios.post(`http://localhost:8081/users/signup`, { user })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
     }    
     
     render() {
@@ -64,24 +63,3 @@ export default class SignUp extends Component {
 }
 
 
-axios({
-         method:'post',
-         url:'/users/signup',
-         params:{
-                email: this.state.email,
-                password: this.state.password,
-                phone_number: this.state.mobile,
-                username: this.state.username
-            },
-         config: { headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
-        })
-        .then(
-            //authentication success...
-        )
-        .catch(error=>{
-            var errResp = error.response;
-            if(errResp.status === 401){
-               //Ex: show login page again...
-            }
-
-        })
