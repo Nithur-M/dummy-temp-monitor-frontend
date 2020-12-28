@@ -1,58 +1,32 @@
-import React from 'react';
-import { Component } from 'react';
-//import Select from 'react-select';
-import Dropdown from 'react-dropdown';
-import axiosInstance from '../services/axios';
+import React, { useState, useEffect } from 'react';
 
+//import Dropdown from 'react-dropdown';
+import { NativeSelect, FormControl} from '@material-ui/core';
 
-import 'react-dropdown/style.css';
-import  './style.css'
+import { fetchSensorID } from '../services/SensorService';
 
-export default class SensorDropdown extends Component{
+//import 'react-dropdown/style.css';
 
-    constructor(props){
-        super(props)
-        this.state = {
-            selectOptions : [],
-            id : "",
-            name: ''
+const SensorDropdown = ({ handleSensorChange }) => {
+    const [fetchedSensorID, setFetchedSensorID] = useState([]);
+
+    useEffect(() => {
+        const fetchID = async () => {
+            setFetchedSensorID(await fetchSensorID());
         }
-    }
 
-    async getOptions(){
-        const res = await axiosInstance.get('/sensors/getsensor_ids')
-        const data = res.data
+        fetchID();
+    }, [setFetchedSensorID]);
 
-
-        const options = data.map((item, index) => ({
-            "value" : index,
-            "label" : item
-        }))
-
-
-        this.setState({selectOptions: options})
-    }
-
-    handleChange(e){
-        this.setState({id:e.value, name:e.label})
-    }
-
-    componentDidMount(){
-        this.getOptions()
-    }
-
-    render(){
-        return (
-            <div className="Dropdown-container">
-            <Dropdown id="dropdown-basic-button"
-                className="Dropdown-root"
-                title="Dropdown button" 
-                placeholder="Select a sensor"
-                options={this.state.selectOptions} 
-                onChange={this.handleChange.bind(this)}/>
-            </div>
-                
-        )
-    }
-
+    
+    return (
+        <FormControl>
+            <NativeSelect defaultValue="" onChange={(e) => handleSensorChange(e.target.value)}>
+                <option value="global">Select Sensor ID</option>
+                {fetchedSensorID.map((sensor, i) => <option key={i} value={sensor}>{sensor}</option>)}
+            </NativeSelect>
+        </FormControl>
+    )
 }
+
+export default SensorDropdown;

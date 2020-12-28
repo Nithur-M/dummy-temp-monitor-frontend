@@ -1,12 +1,10 @@
-import axios from 'axios';
+import axiosInstance from './axios';
 
-const SENSORS_URL = 'http://localhost:8081/sensors/getsensor_ids';
-
-class SensorService {
-
-    getSensorId() {
-        axios.get(SENSORS_URL);
+export const fetchSensorID = async () => {
+    try {
+        const { data } = await axiosInstance.get('/sensors/getsensor_ids');
+        return data.map((item, index) => item);
+    } catch(err){
+        console.log(err);
     }
 }
-
-export default new SensorService();

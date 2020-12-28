@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 export default class Nav extends Component {
     
     handleLogout = () => {
-        localStorage.clear();
+        localStorage.removeItem('token');
         this.props.setUser(null);
     };
     
@@ -35,7 +35,7 @@ export default class Nav extends Component {
         return (
             <nav className="navbar navbar-expand-lg navbar-light fixed-top">
                 <div className="container">
-                    <Link className="navbar-brand" to={"/sign-in"}>Temp Monitor</Link>
+                    <Link className="navbar-brand" to={"/sign-in"}><h5>Temp Monitor</h5></Link>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                         {buttons}
                     </div>
