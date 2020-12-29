@@ -6,24 +6,18 @@ import styles from './chart.style.css';
 
 
 const Chart = ({ data }) => {
-    const [sensorMock, setSensorMock] = useState([]);
+  
 
-    useEffect(() => {
-        const fetchData = async () => {
-            setSensorMock(await fetchSensorMock());
-        }
-
-        fetchData();
-    }, []);
+  
 
 
     const lineChart = (
-        sensorMock.length
+        data.length
         ? (
         <Line
             data={{
                 labels: data.map(({ date }) => date),
-                datasets: [{
+               datasets: [{
                     data: data.map(({ data_value }) => {
                         var numb = data_value.match(/\d/g);
                         numb = numb.join("");
