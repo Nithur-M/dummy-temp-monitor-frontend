@@ -9,7 +9,7 @@ if (localStorage.token) {
 }
 
 const axiosInstance = axios.create({
-    baseURL: baseURL,
+    baseURL: 'http://localhost:8081',
     headers,
 });
 
