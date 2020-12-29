@@ -14,7 +14,7 @@ export default class Login extends Component {
             password: this.password
         }
 
-        axiosInstance.post('/users/signin', data)
+        axiosInstance.post('users/signin', data)
         .then(res => {
             if (Object.keys(res.data).length === 0) {
                 this.setState({
@@ -35,6 +35,7 @@ export default class Login extends Component {
         )
         .catch(
             err => {
+                console.log("Console error catch")
                 console.log(err)
             }
         )
@@ -61,7 +62,7 @@ export default class Login extends Component {
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input type="email" 
+                    <input type="email"
                     className="form-control"
                     placeholder="Enter email"
                     onChange={e => this.email = e.target.value}/>
