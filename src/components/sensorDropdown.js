@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-//import Dropdown from 'react-dropdown';
 import { NativeSelect, FormControl} from '@material-ui/core';
 
 import { fetchSensorID } from '../services/SensorService';
 
-//import 'react-dropdown/style.css';
+
 
 const SensorDropdown = ({ handleSensorChange }) => {
     const [fetchedSensorID, setFetchedSensorID] = useState([]);
@@ -18,7 +17,7 @@ const SensorDropdown = ({ handleSensorChange }) => {
         fetchID();
     }, [setFetchedSensorID]);
 
-    
+
     return (
         <FormControl>
             <NativeSelect defaultValue="" onChange={(e) => handleSensorChange(e.target.value)}>

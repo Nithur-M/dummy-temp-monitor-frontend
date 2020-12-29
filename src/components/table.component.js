@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-import { fetchAlertDetails } from '../services/alertService';
-
 const Table = ({ data }) => {
     const [alertDetails, setAlertDetails] = useState([]);
 
     useEffect(() => {
-        const fetchAlertData = async () => {
-            setAlertDetails(await fetchAlertDetails());
-        }
-
-        fetchAlertData();
+        setAlertDetails(data);
     }, []);
 
     return (
-      <table>
+      <table className="table-striped">
         <thead>
           <tr>
             <th>Date</th>

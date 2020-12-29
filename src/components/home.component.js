@@ -11,47 +11,50 @@ export default class Home extends Component {
         data: {},
         alertData :{},
         sensor: '',
+        showComponent: false
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-          showComponent: false,
-        };
-    }
 
     async componentDidMount() {
-        // const config = {
-        //     headers: {
-        //         Authorization: 'Bearer' + localStorage.getItem('currentUser')
-        //     }
-        // };
-
-        const fetchedSensorMock = await fetchSensorMock();
-        const fetchedAlertDetails = await fetchAlertDetails ();
         this.setState({
             user: localStorage.getItem('token'),
-            data: fetchedSensorMock,
-            alertData : fetchedAlertDetails
         })
     }
+
+
 
     handleSensorChange = async (sensor) => {
         const fetchedSensorMock = await fetchSensorMock(sensor);
         const fetchedAlertDetails = await fetchAlertDetails(sensor);
         console.log(fetchedSensorMock)
-        this.setState({ data: fetchedSensorMock, sensor: sensor, alertData: fetchedAlertDetails });
+        this.setState({ data: fetchedSensorMock, sensor: sensor, alertData: fetchedAlertDetails,showComponent: true  });
 
     }
     render() {
-        const { data, sensor,alertData } = this.state;
+        const { data, sensor,alertData,showComponent } = this.state;
+        let chartandtable;
+
+        if(showComponent){
+            chartandtable =(
+                <div>
+                    <Chart data={data} /><br/><br/>
+                    <h6 >Notification Messages</h6>
+                    <Table data={alertData} />
+                </div>
+            )
+        } else {
+            chartandtable =(
+                <div>No Data</div>
+            )
+
+        }
+        //Main
         if(this.state.user){
             return (
                 <div>
                     <h5>Hi {this.state.user}!</h5>
                     <p>Select the sensor ID to display the chart & table</p><SensorDropdown handleSensorChange={this.handleSensorChange} />
-                    <Chart data={data} />
-                    <Table data={alertData} />
+                    {chartandtable}
                 </div>
             )
         }

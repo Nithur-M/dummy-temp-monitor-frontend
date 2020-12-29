@@ -12,14 +12,20 @@ import SignUp from "./components/signup.component";
 
 export default class App extends Component {
 
-    state ={}
+    state ={user:''}
+
+    componentDidMount() {
+        this.setState({
+            user: localStorage.getItem("token")
+        });
+    }
 
     setUser = user => {
       this.setState({
         user: localStorage.getItem("token")
       });
     }
-    
+
 
     render() {
         return (
