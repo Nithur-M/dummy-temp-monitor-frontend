@@ -1,0 +1,9 @@
+.chart-container {
+    background-color: #F0C38E;
+    justify-content: center;
+    width: 80%;
+    margin-top: 22%;
+    margin-left: 10%;
+    border-radius: 25px;
+    padding: 10%;
+}

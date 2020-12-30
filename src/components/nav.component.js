@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+import '../styles/style.css';
+
 export default class Nav extends Component {
     
     handleLogout = () => {

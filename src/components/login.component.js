@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import axiosInstance from '../services/axios';
 
+import '../styles/style.css';
+
 export default class Login extends Component {
     state = {}
 
@@ -58,7 +60,7 @@ export default class Login extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 {error}
-                <h3>Sign In</h3>
+                <h3 style={{color: '#312C51'}}>Sign In</h3>
 
                 <div className="form-group">
                     <label>Email address</label>

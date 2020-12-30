@@ -1,0 +1,28 @@
+.banner{
+    width: 100%;
+    height: 260px;
+    background-color: #F0C38E;
+}
+
+.title {
+    position: absolute;
+    color: #312c51;
+    text-align: left;
+    margin-left: 120px;
+    margin-top: 40px;
+}
+
+.logo {
+    width: 115px;
+    margin-top: 10px;
+    float: right;
+    margin-right: 20%;
+}
+
+.desc p {
+    position: absolute;
+    text-align: left;
+    margin-left: 120px;
+    margin-top: 140px;
+    color: #48426D;
+}

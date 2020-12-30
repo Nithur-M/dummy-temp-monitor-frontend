@@ -4,7 +4,10 @@ import {fetchAlertDetails} from "../services/alertService";
 import SensorDropdown from './sensorDropdown';
 import Chart from './chart.component';
 import Table from './table.component';
+import Intro from './intro.component';
 import { fetchSensorMock } from '../services/sensorMock';
+
+import '../styles/home.style.css';
 
 export default class Home extends Component {
     state = {
@@ -38,28 +41,38 @@ export default class Home extends Component {
             chartandtable =(
                 <div>
                     <Chart data={data} /><br/><br/>
-                    <h6 >Notification Messages</h6>
                     <Table data={alertData} />
                 </div>
             )
         } else {
             chartandtable =(
-                <div>No Data</div>
+                <div></div>
             )
 
         }
         //Main
         if(this.state.user){
             return (
-                <div>
-                    <h5>Hi {this.state.user}!</h5>
-                    <p>Select the sensor ID to display the chart & table</p><SensorDropdown handleSensorChange={this.handleSensorChange} />
-                    {chartandtable}
+                <div className="home-container">
+                    <Intro />
+                    <div className="options-container">
+                        <h3>Hi {this.state.user}!</h3>
+                        <p>Select the sensor ID to display the chart & table</p>
+                        <div className="dropdown-container">
+                            <SensorDropdown handleSensorChange={this.handleSensorChange} />
+                        </div>
+                    </div>
+                        <div className="charttable-container">
+                            {chartandtable}
+                        </div>
+                    
                 </div>
             )
         }
         return (
-            <h2>You are not logged in</h2>
+            <div>
+                <h2>You are not logged in</h2>
+            </div>
         )
     }
 }

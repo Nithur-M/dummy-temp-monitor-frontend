@@ -59,7 +59,7 @@ export default class SignUp extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 {message}
-                <h3>Sign Up</h3>
+                <h3 style={{color: '#312C51'}}>Sign Up</h3>
 
                 <div className="form-group">
                     <label>User name</label>

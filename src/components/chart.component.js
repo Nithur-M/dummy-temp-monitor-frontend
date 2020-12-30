@@ -1,16 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { Line } from 'react-chartjs-2';
-import { fetchSensorMock } from  '../services/sensorMock';
-import styles from './chart.style.css';
+
+import styles from '../styles/chart.style.css';
 
 
 
 const Chart = ({ data }) => {
   
-
-  
-
-
     const lineChart = (
         data.length
         ? (
@@ -24,7 +20,7 @@ const Chart = ({ data }) => {
                         return  numb
                     }),
                     label: 'Outdoor Temperature',
-                    borderColor: '#3333ff',
+                    borderColor: '#48426D',
                     fill: 'none'
                 }],
             }}
@@ -32,7 +28,7 @@ const Chart = ({ data }) => {
     );
 
     return (
-        <div className={styles.container}>
+        <div className="chart-container">
             { lineChart }
         </div>
     )

@@ -1,0 +1,47 @@
+.auth-wrapper .form-control{
+    background-color: #feeb97;
+    border: none;
+    color: #312C51;
+}
+
+.auth-wrapper label {
+    color: #312C51;
+}
+
+.form-control input[type="email"] {
+    color: white;
+  }
+
+.btn btn-primary btn-block{
+    background-color: #312C51;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #312C51;
+    border-color: #312C51;
+}
+
+.forgot-password a {
+    color: #312C51;
+}
+
+.btn:hover {
+    background-color: slateblue;
+}
+
+.navbar-light {
+    background-color: #312C51;
+}
+
+.navbar-brand h5 {
+    color: #F0C38E;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #F0C38E;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: slateblue;
+}
