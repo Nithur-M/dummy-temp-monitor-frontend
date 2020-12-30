@@ -7,14 +7,14 @@ export default class SignUp extends Component {
     state ={};
 
       handleSubmit = e => {
-        e.preventDefault();
+          if((this.username && this.email && this.mobile && this.password)!=null) {
         const data = {
             name: this.username,
             email: this.email,
             phone_number: this.mobile,
             password: this.password
         };
-        
+
         axiosInstance.post('/users/signup', data).then(
             res => {
                 if (Object.keys(res.data).length === 0) {
@@ -36,9 +36,13 @@ export default class SignUp extends Component {
                 console.log(err);
             }
         )
-    
-    }    
-    
+          }else{
+              alert("Fill the fields")
+              e.preventDefault();
+          }
+
+    }
+
     render() {
 
         let message = '';
@@ -59,11 +63,11 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>User name</label>
-                    <input type="text" 
-                    className="form-control" 
-                    name="username" 
-                    onChange={e => this.username = e.target.value} 
-                    placeholder="User name" 
+                    <input type="text"
+                    className="form-control"
+                    name="username"
+                    onChange={e => this.username = e.target.value}
+                    placeholder="User name"
                     />
                 </div>
 
@@ -87,11 +91,11 @@ export default class SignUp extends Component {
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" 
+                    <input type="password"
                     className="form-control"
                     name="password"
                     onChange={e => this.password = e.target.value}
-                    placeholder="Enter password" 
+                    placeholder="Enter password"
                     />
                 </div>
 
